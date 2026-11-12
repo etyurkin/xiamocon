@@ -1,20 +1,12 @@
-name: Doxygen GitHub Pages Deploy Action
-
+name: Security hold xiamocon-doxygen-gh-pages.yml
+# Privileged or third-party workflow suspended until reviewed with isolated credentials.
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-
+permissions:
+  contents: read
 jobs:
-  deploy:
+  security-hold:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: docs/html
-          config_file: cpp/Doxyfile
+      - name: Explain hold
+        run: echo "This privileged workflow is temporarily disabled for repository security."
